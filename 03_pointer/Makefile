@@ -2,16 +2,16 @@ CC := cc
 CFLAGS = -Wall
 
 PROG := play_pointer pointer_app
-SRCS := $(addsuffix .c, $(PROG))
-OBJS := $(SRCS:%.c=%.o)
+SRCS := $(PROG:=.c)
+OBJS := $(SRCS:.c=.o)
 
 CC_CMD := $(CC) -c $(CFLAGS)
 
 .PHONY: all
 all: $(PROG)
 
-$(PROG): $(addsuffix .o, $(PROG))
-	$(CC) -o $(@) $(@).o
+$(PROG): %: %.o
+	$(CC) -o $(@) $(<)
 
 $(OBJS): %.o: %.c
 	$(CC_CMD) $(<) -o $(@)
