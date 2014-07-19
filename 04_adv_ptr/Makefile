@@ -1,24 +1,27 @@
 CC := cc
 CFLAGS = -Wall
 
-PROG := pointer_array
-SRCS := $(addsuffix .c, $(PROG))
-OBJS := $(SRCS:%.c=%.o)
+PROG := pointer_array 
+SRCS := $(PROG:=.c)
+OBJS := $(SRCS:.c=.o)
 
 CC_CMD := $(CC) -c $(CFLAGS)
 
 .PHONY: all
 all: $(PROG)
 
-$(PROG): $(addsuffix .o, $(PROG))
-	$(CC) -o $(@) $(@).o
+$(PROG): %: %.o
+	$(CC) -o $(@) $(<)
 
 $(OBJS): %.o: %.c
 	$(CC_CMD) $(<) -o $(@)
 
 .PHONY: run
 run: $(PROG)
-	$(foreach pg, $(PROG), ./$(pg);)
+	@for prog in $(PROG); do \
+		echo "\nRunning ./"$$prog" ..."; \
+		./$$prog; \
+	done
 
 .PHONY: clean
 clean:
