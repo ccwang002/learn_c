@@ -18,7 +18,8 @@ $(OBJS): %.o: %.c
 
 .PHONY: run
 run: $(PROG)
-	$(foreach pg, $(PROG), ./$(pg);)
+	# Running in make cannot accept stdin
+	echo $(PROG) | xargs -n 1 -I prog sh -c "./prog"
 
 .PHONY: clean
 clean:
