@@ -1,4 +1,4 @@
-SUB_DIRS := $(shell find -E .  -type dir -depth -regex "\./[[:digit:]]{2}_.*")
+SUB_DIRS := $(shell find . -iname "[0-9][0-9]*" -type d)
 
 .PHONY: all
 all:
