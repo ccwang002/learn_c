@@ -1,4 +1,4 @@
-SUB_DIRS := $(shell find . -iname "[0-9][0-9]*" -type d)
+SUB_DIRS := $(shell find . -iname "[0-9][0-9]_*" -type d)
 
 .PHONY: all
 all:
