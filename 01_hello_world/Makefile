@@ -13,6 +13,10 @@ $(PROG): $(OBJS)
 $(OBJS): %.o: %.c
 	$(CC_CMD) $< -o $@
 
+.PHONY: run
+run: $(PROG)
+	echo "\nRunning ./"$(PROG)" ..."&& ./$(PROG)
+
 .PHONY: clean
 clean:
 	rm $(PROG) $(OBJS)

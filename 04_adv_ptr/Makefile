@@ -1,7 +1,7 @@
 CC := cc
 CFLAGS = -Wall
 
-PROG := pointer_array 
+PROG := pointer_array
 SRCS := $(PROG:=.c)
 OBJS := $(SRCS:.c=.o)
 

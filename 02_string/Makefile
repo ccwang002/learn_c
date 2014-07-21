@@ -18,7 +18,10 @@ $(OBJS): %.o: %.c
 
 .PHONY: run
 run: $(PROG)
-	$(foreach pg, $(PROG), ./$(pg);)
+	@for prog in $(PROG); do \
+		echo "\nRunning ./"$$prog" ..."; \
+		./$$prog; \
+	done
 
 .PHONY: clean
 clean:
