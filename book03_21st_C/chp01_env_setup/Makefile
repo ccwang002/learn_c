@@ -1,23 +1,23 @@
 CC := clang
-CFLAGS = -Wall -g -O3 --std=gnu11 -lm
+CFLAGS = -Wall -g -O3 --std=gnu11
 CC_CMD := $(CC) $(CFLAGS)
+LIBS := -lm
 
 PROG := erf
 
 .PHONY: all
 all: $(PROG)
 
-$(PROG): %: %.c
-	$(CC_CMD) $(<) -o $(@)
+$(PROG): %: %.o
+	$(CC_CMD) -o $(@) $(<) $(LIBS)
+
+$(PROG:=.o): %.o: %.c
+	$(CC_CMD) -c $(<) -o $(@)
 
 .PHONY: run
 run: $(PROG)
 	echo "\nRunning ./"$(PROG)" ..."&& ./$(PROG)
 
 .PHONY: clean
-clean: clean_dSYM
-	rm $(PROG)
-
-.PHONY: clean_dSYM
-clean_dSYM:
-	rm -r $(PROG:=.dSYM)
+clean:
+	rm $(PROG) $(PROG:=.o)
