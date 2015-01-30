@@ -1,0 +1,8 @@
+P = erf
+OBJECTS =
+CFLAGS=-Wall -g -lm
+CC = c99
+
+.PHONY: clean
+clean:
+	rm -f $(P) $(P:=.o)
