@@ -1,0 +1,9 @@
+P = erf
+OBJECTS=
+CFLAGS=-Wall -g -lm -std=gnu11
+CC=clang
+
+.PHONY: clean
+clean:
+	rm -f $(P) $(P:=.o)
+	rm -rf $(P:=.dSYM)
