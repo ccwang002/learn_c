@@ -14,7 +14,7 @@ int main(void)
 	puts("Input two integers");
 	printf("Int A: "); 	scanf("%d", &na);
 	printf("Int B: "); 	scanf("%d", &nb);
-	
+
 	sum_diff(na, nb, &wa, &sa);
 	printf("A + B = %d, |A - B| = %d\n", wa, sa);
 
