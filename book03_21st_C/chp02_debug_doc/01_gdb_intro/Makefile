@@ -1,16 +1,15 @@
 P=stddev_bugged glist
-CC=clang -std=gnu11
-CFLAGS=-Wall -g `pkg-config --cflags glib-2.0`
+CFLAGS=-std=c11 -O -g -Wall -Wextra -pedantic `pkg-config --cflags glib-2.0`
 LDLIBS=`pkg-config --libs glib-2.0` -lm
 
 .PHONY: all
 all : $(P)
 
 $(P): %: %.o
-	$(CC) $(CFLAGS) -o $(@) $(<) $(LDLIBS)
+#	$(CC) $(CFLAGS) -o $(@) $(<) $(LDLIBS)
 
 $(P:=.o): %.o: %.c
-	$(CC) $(CFLAGS) -c $(<) -o $(@)
+#	$(CC) $(CFLAGS) -c $(<) -o $(@)
 
 .PHONY: clean
 clean:
